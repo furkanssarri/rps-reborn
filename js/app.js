@@ -28,11 +28,23 @@ function eventListeners() {
          playerSelection = "scissors";
       }
       else {
-         console.log("please select a hand.")
+         if (isGameOver === true) {
+            console.log(`You cannot select anymore hands because the game is over. Please refresh the page if you want to play again.`);
+         } else {
+            console.log(`Please select a hand.`)
+         }
       }
       game();
    });
 }
+
+window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({matches}) => {
+   if (matches) {
+      console.log("change to the dark theme");
+   } else {
+      console.log("change to light theme");
+   };
+})
 
 function getComputerChoice() {
    let randomNumber = Math.floor(Math.random() * 100 + 1);
@@ -71,8 +83,7 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game(winner) {
-   if (isGameOver === false) {
-      getComputerChoice();
+   getComputerChoice();
       playRound(playerSelection, computerSelection);
       if (roundWinner === "player") {
          console.log(`You win. ${playerSelection} wins over ${computerSelection}. 
@@ -84,20 +95,24 @@ function game(winner) {
          console.warn(`It's a tie. ${computerSelection} ties with ${playerSelection}. 
       Player score: ${playerScore}, Computer score: ${computerScore}.`);
       }
-      gameScoreCount(playerScore, computerScore);
-   } else if (isGameOver === true) {
-      resolveGame(winner);
-      console.log(`The game is over.
-      The winner is ${winner}. Feel free to refresh the page to play again.`)
-   }
+      if (playerScore === 5 && computerScore < 5 && computerScore >= 0) {
+         winner = "player";
+      } else if (computerScore === 5 && playerScore < 5 && playerScore >= 0) {
+         winner = "computer";
+      }
+      gameScoreCount(playerScore, computerScore, winner);
 }
 
-function gameScoreCount(playerScore, computerScore) {
+function gameScoreCount(playerScore, computerScore, winner) {
    if (playerScore === 5 || computerScore === 5) {
       for (let i = 0; i < buttons.length; i++) {
          const element = buttons[i];
          element.disabled = true;
          isGameOver = true;
+         resolveGame(winner);
+         let gameWinner = winner[0].toUpperCase() + winner.slice(1);
+         console.log(`The game is over. 
+         The winner is ${gameWinner}. Feel free to refresh the page to play again.`);
       };
    };
 }
