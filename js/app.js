@@ -4,7 +4,19 @@ const rockBtn = document.getElementById("rock");
 const paperBtn = document.getElementById("paper");
 const scissorsBtn = document.getElementById("scissors");
 const buttons = document.querySelectorAll(".btn");
-
+// Theme Variables
+const setTheme = (theme) => {
+   document.documentElement.className = theme;
+   localStorage.setItem('theme', theme);
+};
+const getTheme = () => {
+   const theme = localStorage.getItem('theme');
+   theme && setTheme(theme);
+}
+getTheme();
+document.getElementById('theme-select').addEventListener('change', function () {
+   setTheme(this.value);
+});
 // Variables
 let computerScore = 0;
 let playerScore = 0;
@@ -38,13 +50,13 @@ function eventListeners() {
    });
 }
 
-window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({matches}) => {
-   if (matches) {
-      console.log("change to the dark theme");
-   } else {
-      console.log("change to light theme");
-   };
-})
+// window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({matches}) => {
+//    if (matches) {
+//       console.log("change to the dark theme");
+//    } else {
+//       console.log("change to light theme");
+//    };
+// })
 
 function getComputerChoice() {
    let randomNumber = Math.floor(Math.random() * 100 + 1);
@@ -84,23 +96,23 @@ function playRound(playerSelection, computerSelection) {
 
 function game(winner) {
    getComputerChoice();
-      playRound(playerSelection, computerSelection);
-      if (roundWinner === "player") {
-         console.log(`You win. ${playerSelection} wins over ${computerSelection}. 
+   playRound(playerSelection, computerSelection);
+   if (roundWinner === "player") {
+      console.log(`You win. ${playerSelection} wins over ${computerSelection}. 
       Player score: ${playerScore}, Computer score: ${computerScore}.`);
-      } else if (roundWinner === "computer") {
-         console.error(`You lose. ${computerSelection} wins over ${playerSelection}. 
+   } else if (roundWinner === "computer") {
+      console.error(`You lose. ${computerSelection} wins over ${playerSelection}. 
       Player score: ${playerScore}, Computer score: ${computerScore}.`);
-      } else if (roundWinner === "tie") {
-         console.warn(`It's a tie. ${computerSelection} ties with ${playerSelection}. 
+   } else if (roundWinner === "tie") {
+      console.warn(`It's a tie. ${computerSelection} ties with ${playerSelection}. 
       Player score: ${playerScore}, Computer score: ${computerScore}.`);
-      }
-      if (playerScore === 5 && computerScore < 5 && computerScore >= 0) {
-         winner = "player";
-      } else if (computerScore === 5 && playerScore < 5 && playerScore >= 0) {
-         winner = "computer";
-      }
-      gameScoreCount(playerScore, computerScore, winner);
+   }
+   if (playerScore === 5 && computerScore < 5 && computerScore >= 0) {
+      winner = "player";
+   } else if (computerScore === 5 && playerScore < 5 && playerScore >= 0) {
+      winner = "computer";
+   }
+   gameScoreCount(playerScore, computerScore, winner);
 }
 
 function gameScoreCount(playerScore, computerScore, winner) {
