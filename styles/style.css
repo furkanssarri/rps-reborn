@@ -6,37 +6,25 @@
 
 :root.dark {
    --bg-color: #222222;
-   --text-color: #45ADFE;
+   --text-color: #dcdcdc;
 }
 
-
+*,
+*:after,
+*:before,
 body {
-   margin: 0;
    padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+   max-height: 100vh;
    background-color: var(--bg-color) !important;
    color: var(--text-color) !important;
 }
 
-.theme-btn {
-   /* width: 3em; */
-   height: 3em;
-   padding: 0.5rem;
-   margin: 1em 0.1em;
-   cursor: pointer;
-   border-radius: 5px;
-   border: 3px solid #34c5ff;
-   background-color: #b4b4b4;
-   color: #037fb0;
-}
 
-.theme-btn:hover {
-   background-color: #34c5ff;
-   color: #fff;
-   border-color: #fff;
-}
 
 select {
-   margin: 1em 1em 0 1em!important;
+   margin: 0 1em 0 1em!important;
    float: right!important;
    padding: 0.25rem 0.75rem;
    font-size: 1.25rem;
@@ -46,9 +34,60 @@ select {
    border-radius: 0.25rem;
    }
 
+.menu{
+   padding: 0.5em;
+   display: flex;
+   justify-content: space-between;
+   
+}
+
+.menu div {
+   margin: 0.5em;
+}
+
+.header-container {
+   color: #fff;
+   background-color: #130e0b;
+   padding: 20px 0;
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+}
+
+.header {
+   display: flex;
+}
+
+.header h1 {
+   font-family: 'Press Start 2P', monospace;
+   color: #e2941d;
+}
+
+.main-content {
+   display: flex;
+   justify-content: center;
+   text-align: center;
+   min-height: 80vh;
+   font-family: 'Roboto Mono', monospace;
+}
+
+.announcing-area h5 {
+   font-size: 2.25em;
+}
+
+
+
+
+
+
+
+
+
+
+
 @media (prefers-color-scheme: dark) {
    :root {
    --bg-color: #222222;
-   --text-color: #45ADFE;
+   --text-color: #dcdcdc;
    }
    }

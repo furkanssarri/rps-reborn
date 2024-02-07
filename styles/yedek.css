@@ -1,0 +1,28 @@
+.theme-btn {
+   /* width: 3em; */
+   height: 3em;
+   padding: 0.5rem;
+   margin: 1em 0.1em;
+   cursor: pointer;
+   border-radius: 5px;
+   border: 3px solid #34c5ff;
+   background-color: #b4b4b4;
+   color: #037fb0;
+}
+
+.theme-btn:hover {
+   background-color: #34c5ff;
+   color: #fff;
+   border-color: #fff;
+}
+
+select {
+   margin: 1em 1em 0 1em!important;
+   float: right!important;
+   padding: 0.25rem 0.75rem;
+   font-size: 1.25rem;
+   font-family: inherit;
+   background-color: var(--bg-color);
+   color: var(--text-color);
+   border-radius: 0.25rem;
+   }
