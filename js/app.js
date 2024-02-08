@@ -4,6 +4,8 @@ const rockBtn = document.getElementById("rock");
 const paperBtn = document.getElementById("paper");
 const scissorsBtn = document.getElementById("scissors");
 const buttons = document.querySelectorAll(".btn");
+
+
 // Theme Variables
 const setTheme = (theme) => {
    document.documentElement.className = theme;

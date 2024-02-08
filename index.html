@@ -6,21 +6,30 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Rock Paper Scissors</title>
    <link rel="stylesheet" href="css/style.css">
+   <!-- Fonts -->
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;family=Roboto+Mono:wght@100&amp;display=swap"
       rel="stylesheet">
+   <!-- FontAwesome -->
+   <script src="https://kit.fontawesome.com/a4cf3a1ade.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
    <!--Header-->
    <div class='header-container'>
       <div class="theme-wrapper">
-         <select name="theme" id="appTheme">
-            <option value="light" id="theme">Light</option>
-            <option value="dark" id="dark">Dark</option>
-            <option value="os-default" id="osDefault">OS Default</option>
+         <select name="theme" multiple id="appTheme">
+            <option value="light" id="theme">&#xf185</i></option>
+            <option value="dark" id="dark">&#xf186</i></option>
+            <option value="os-default" id="osDefault"><i class="fa-brands fa-github"></option>
          </select>
+         <ul name="theme" id="appTheme">
+            <li value="ligh" class="light" onclick="setTheme('theme')" id="light"><a href="#">Light</a></li>
+            <li value="dark" class="dark" onclick="setTheme('theme')" id="dark"><a href="#">Dark</a></li>
+            <li value="os-default" class="os-default" onclick="setTheme('theme')" id="os-default"><a href="#">OS Default</a></li>
+         </ul>
       </div>
       <div class='header'>
          <div class="heading">
@@ -61,7 +70,7 @@
    <!--Footer-->
    <footer>
       <div class="credit">
-         <a href="https://github.com/furkanssarri">furkanssarri</a>
+         <a href="https://github.com/furkanssarri"><i class="fa-brands fa-github"></i> furkanssarri</a>
       </div>
    </footer>
 </body>
