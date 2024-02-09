@@ -15,10 +15,11 @@ const getTheme = () => {
    const theme = localStorage.getItem('theme');
    theme && setTheme(theme);
 }
-getTheme();
-document.getElementById('theme-select').addEventListener('change', function () {
-   setTheme(this.value);
-});
+// getTheme();
+// document.getElementById('theme-select').addEventListener('change', function () {
+//    setTheme(this.value);
+//    console.log(this)
+// });
 // Variables
 let computerScore = 0;
 let playerScore = 0;

@@ -8,9 +8,9 @@
 }
 
 :root.dark {
-  --bg-color: #222222;
+  --bg-color: #1d1d1d;
   --text-color: #dcdcdc;
-  --header-bg-color: #120e0b;
+  --header-bg-color: ##141414;
   --game-button-bg-color: #33383c;
   --game-button-hover-bg-color: #2e3032;
 }
@@ -31,6 +31,23 @@ body {
 .theme-wrapper {
   background-color: inherit !important;
 }
+.theme-wrapper ul {
+  display: block;
+}
+.theme-wrapper ul li {
+  background-color: inherit !important;
+  display: block;
+}
+.theme-wrapper ul li a {
+  background-color: inherit !important;
+  text-decoration: none;
+}
+.theme-wrapper ul li:hover {
+  display: block;
+}
+.theme-wrapper .hamburger i:last-child {
+  display: none !important;
+}
 
 select {
   margin: 0 1em 0 1em;
@@ -42,13 +59,17 @@ select {
   font-family: "FontAwesome", "sans-serif";
 }
 
-.menu {
+.theme-toggle {
+  background-color: var(--header-bg-color) !important;
+}
+
+.date {
   padding: 0.5em;
   display: flex;
   justify-content: space-between;
   background-color: inherit !important;
 }
-.menu div {
+.date p {
   margin: 0.5em;
   background-color: inherit !important;
   counter-reset: var(--text-color);
@@ -71,6 +92,7 @@ select {
   font-family: "Press Start 2P", monospace;
   color: #e2941d !important;
   background-color: var(--header-bg-color) !important;
+  text-shadow: 2px 2px #000, 4px 4px 3px #cd7f0a;
 }
 
 main {
@@ -80,6 +102,7 @@ main {
   min-height: 66.5vh;
   font-family: "Roboto Mono", monospace;
   margin-top: 4.25vh;
+  background-color: var(--bg-color);
 }
 main .announce-area h2 {
   font-size: 2.75em;
@@ -124,12 +147,13 @@ footer {
   justify-content: center;
   align-items: center;
   background-color: var(--header-bg-color) !important;
-  padding: 1.71vh;
+  min-height: 13vh;
   margin-top: 2vh;
-  box-shadow: 1px 5px 10px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 1px 5px 10px 5px rgba(0, 0, 0, 0.5019607843);
 }
 footer .credit {
   background-color: inherit !important;
+  margin-top: 10px;
 }
 footer a {
   background-color: inherit !important;
@@ -140,9 +164,9 @@ footer a {
 /* --------- MEDIA QUERIES --------- */
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg-color: #222222;
+    --bg-color: ##1d1d1d;
     --text-color: #dcdcdc;
-    --header-bg-color: #120e0b;
+    --header-bg-color: ##141414;
     --game-button-bg-color: #33383c;
     --game-button-hover-bg-color: #2e3032;
   }

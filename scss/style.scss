@@ -8,9 +8,9 @@
 }
 
 :root.dark {
-   --bg-color: #222222;
+   --bg-color: #1d1d1d;
    --text-color: #dcdcdc;
-   --header-bg-color: #120e0b;
+   --header-bg-color: ##141414;
    --game-button-bg-color: #33383c;
    --game-button-hover-bg-color: #2e3032;
 }
@@ -30,6 +30,25 @@ body {
 
 .theme-wrapper {
    background-color: inherit !important;
+   ul {
+      display: block;
+      li {
+         background-color: inherit !important;
+         display: block;
+         a {
+            background-color: inherit !important;
+            text-decoration: none;
+         }
+         &:hover {
+            display: block;
+         }
+      }
+   }
+   .hamburger {
+      i:last-child {
+         display: none !important;
+      }
+   }
 }
 
 select {
@@ -39,15 +58,19 @@ select {
    font-family: inherit;
    border-radius: 0.25rem;
    background-color: inherit !important;
-   font-family: 'FontAwesome', 'sans-serif';
+   font-family: "FontAwesome", "sans-serif";
 }
 
-.menu {
+.theme-toggle {
+   background-color: var(--header-bg-color) !important;
+}
+
+.date {
    padding: 0.5em;
    display: flex;
    justify-content: space-between;
    background-color: inherit !important;
-   div {
+   p {
       margin: 0.5em;
       background-color: inherit !important;
       counter-reset: var(--text-color);
@@ -61,8 +84,7 @@ select {
    display: flex;
    justify-content: space-around;
    align-items: center;
-   box-shadow: 0 -6px 10px 5px rgba(0,0,0,0.5);
-
+   box-shadow: 0 -6px 10px 5px rgba(0, 0, 0, 0.5);
 }
 
 .header {
@@ -71,6 +93,8 @@ select {
       font-family: "Press Start 2P", monospace;
       color: #e2941d !important;
       background-color: var(--header-bg-color) !important;
+      text-shadow: 2px 2px #000,
+      4px 4px 3px #cd7f0a;
    }
 }
 
@@ -81,6 +105,7 @@ main {
    min-height: 66.5vh;
    font-family: "Roboto Mono", monospace;
    margin-top: 4.25vh;
+   background-color: var(--bg-color);
    .announce-area {
       h2 {
          font-size: 2.75em;
@@ -114,7 +139,7 @@ main {
          height: 150px;
          cursor: pointer;
          border: none;
-         background-color:  var(--game-button-bg-color)!important;
+         background-color: var(--game-button-bg-color) !important;
          border-radius: 10px;
          &:hover {
             background-color: var(--game-button-hover-bg-color) !important;
@@ -127,12 +152,13 @@ footer {
    justify-content: center;
    align-items: center;
    background-color: var(--header-bg-color) !important;
-   padding: 1.71vh;
+   min-height: 13vh;
    margin-top: 2vh;
-   box-shadow: 1px 5px 10px 5px rgba(0,0,0,0.5);
+   box-shadow: 1px 5px 10px 5px #00000080;
 
    .credit {
       background-color: inherit !important;
+      margin-top: 10px;
    }
    a {
       background-color: inherit !important;
@@ -145,9 +171,9 @@ footer {
 
 @media (prefers-color-scheme: dark) {
    :root {
-      --bg-color: #222222;
+      --bg-color: ##1d1d1d;
       --text-color: #dcdcdc;
-      --header-bg-color: #120e0b;
+      --header-bg-color: ##141414;
       --game-button-bg-color: #33383c;
       --game-button-hover-bg-color: #2e3032;
    }
@@ -177,14 +203,12 @@ footer {
       }
    }
    main {
-
       .buttons {
-         
          button {
             font-size: 3em;
             height: 125px;
             width: 125px;
-            padding: 12px
+            padding: 12px;
          }
       }
    }
