@@ -1,10 +1,16 @@
 // Constants
+const dateBox = document.querySelector(".date");
 const playGround = document.querySelector(".playground");
+const hands = document.querySelector(".hands");
 const rockBtn = document.getElementById("rock");
 const paperBtn = document.getElementById("paper");
 const scissorsBtn = document.getElementById("scissors");
-const buttons = document.querySelectorAll(".btn");
+const buttons = document.querySelectorAll("button");
 const announcer = document.getElementById("announcer")
+const description = document.getElementById("description");
+const para = document.querySelectorAll(".para");
+const announceArea = document.querySelector(".announce-area");
+
 
 
 // UI-Related Constants
@@ -27,6 +33,8 @@ function toggleMenu() {
    }
 }
 
+
+
 hamburger.addEventListener("click", toggleMenu);
 
 // Variables
@@ -40,6 +48,9 @@ let isGameOver = false;
 let winner;
 let defaultTheme;
 
+let date = new Date().toLocaleDateString();
+
+dateBox.textContent = date;
 
 // Theme Variables
 const setTheme = (theme) => {
@@ -56,24 +67,68 @@ getTheme();
 eventListeners();
 
 function eventListeners() {
-   playGround.addEventListener("click", function (e) {
-      if (e.target.id === "rock") {
-         playerSelection = "rock";
-      } else if (e.target.id === "paper") {
-         playerSelection = "paper";
-      } else if (e.target.id === "scissors") {
-         playerSelection = "scissors";
-      }
-      else {
-         if (isGameOver === true) {
-            console.log(`You cannot select anymore hands because the game is over. Please refresh the page if you want to play again.`);
+   // playGround.addEventListener("click", function (e) {
+   //    if (e.target.id === "rock") {
+   //       playerSelection = "rock";
+   //    } else if (e.target.id === "paper") {
+   //       playerSelection = "paper";
+   //    } else if (e.target.id === "scissors") {
+   //       playerSelection = "scissors";
+   //    }
+   //    else {
+   //       if (isGameOver === true) {
+   //          console.log(`You cannot select anymore hands because the game is over. Please refresh the page if you want to play again.`);
+   //       }
+   //    }
+   //    game();
+   // });
+   buttons.forEach(button => {
+      button.addEventListener("click", (e) => {
+         if (e.target.id === "rock") {
+            playerSelection = "rock";
+         } else if (e.target.id === "paper") {
+            playerSelection = "paper";
+         } else if (e.target.id === "scissors") {
+            playerSelection = "scissors";
          }
-      }
-      game();
+         else {
+            if (isGameOver === true) {
+               console.log(`You cannot select anymore hands because the game is over. Please refresh the page if you want to play again.`);
+            }
+         }
+         game();
+      })
    });
 }
 
 
+function convertHands(playerSelection, computerSelection) {
+   let rock = "✊",
+   paper = "✋",
+   scissors = "✌️";
+   switch (playerSelection) {
+      case "rock":
+         hands.firstChild.nextSibling.textContent = rock;
+         break;
+      case "paper":
+         hands.firstChild.nextSibling.textContent = paper;
+         break;
+      case "scissors":
+         hands.firstChild.nextSibling.textContent = scissors;
+         break;
+   }
+   switch (computerSelection) {
+      case "rock":
+         hands.lastChild.previousSibling.textContent = rock;
+         break;
+      case "paper":
+         hands.lastChild.previousSibling.textContent = paper;
+         break;
+      case "scissors":
+         hands.lastChild.previousSibling.textContent = scissors;
+         break;
+   }
+}
 
 function getComputerChoice() {
    let randomNumber = Math.floor(Math.random() * 100 + 1);
@@ -90,6 +145,7 @@ function getComputerChoice() {
 
 
 function playRound(playerSelection, computerSelection) {
+   convertHands(playerSelection, computerSelection);
    if (playerSelection === "rock" && computerSelection === "scissors" ||
       playerSelection === "scissors" && computerSelection === "paper" ||
       playerSelection === "paper" && computerSelection === "rock") {
@@ -115,14 +171,13 @@ function game(winner) {
    getComputerChoice();
    playRound(playerSelection, computerSelection);
    if (roundWinner === "player") {
-      console.log(`You win. ${playerSelection} wins over ${computerSelection}. 
-      Player score: ${playerScore}, Computer score: ${computerScore}.`);
+      description.textContent = `You win. ${playerSelection} wins over ${computerSelection}.`
+      para[0].textContent = playerScore;
    } else if (roundWinner === "computer") {
-      console.error(`You lose. ${computerSelection} wins over ${playerSelection}. 
-      Player score: ${playerScore}, Computer score: ${computerScore}.`);
+      description.textContent = `You lose. ${computerSelection} wins over ${playerSelection}.`
+      para[1].textContent = computerScore;
    } else if (roundWinner === "tie") {
-      console.warn(`It's a tie. ${computerSelection} ties with ${playerSelection}. 
-      Player score: ${playerScore}, Computer score: ${computerScore}.`);
+      description.textContent = `It's a tie. ${computerSelection} ties with ${playerSelection}. `
    }
    if (playerScore === 5 && computerScore < 5 && computerScore >= 0) {
       winner = "player";
@@ -140,9 +195,13 @@ function gameScoreCount(playerScore, computerScore, winner) {
          isGameOver = true;
          resolveGame(winner);
          let gameWinner = winner[0].toUpperCase() + winner.slice(1);
-         console.log(`The game is over. 
-         The winner is ${gameWinner}. Feel free to refresh the page to play again.`);
+         announcer.textContent = "GAME OVER";
+         description.textContent = `The winner is ${gameWinner}. Click the button to play again.`;
       };
+      let replay = document.createElement("a");
+      replay.classList.add("btn", "btn-dark");
+      replay.textContent = "Replay";
+      announceArea.appendChild(replay);
    };
 }
 

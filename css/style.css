@@ -83,6 +83,7 @@ body {
 .theme-wrapper .hamburger span:last-child {
   display: none;
 }
+
 .showMenu {
   display: block !important;
 }
@@ -168,6 +169,25 @@ main .playground .buttons button:hover {
   background-color: var(--hand-button-bg-hover-color) !important;
 }
 
+.btn {
+  background-color: #e2941d;
+  color: #eaeaea;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 1em;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.btn:hover {
+  background-color: var(--bg-color);
+  border: 2px solid #e2941d;
+  color: var(--text-color);
+}
+
+.btn-restart {
+  display: block;
+}
+
 footer {
   display: flex;
   justify-content: center;
@@ -180,6 +200,7 @@ footer {
 footer .credit {
   font-size: 1.1em;
 }
+
 @media (prefers-color-scheme: dark) {
   :root {
     --bg-color: #1d1d1d;
