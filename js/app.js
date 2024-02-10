@@ -4,22 +4,31 @@ const rockBtn = document.getElementById("rock");
 const paperBtn = document.getElementById("paper");
 const scissorsBtn = document.getElementById("scissors");
 const buttons = document.querySelectorAll(".btn");
+const announcer = document.getElementById("announcer")
 
 
-// Theme Variables
-const setTheme = (theme) => {
-   document.documentElement.className = theme;
-   localStorage.setItem('theme', theme);
-};
-const getTheme = () => {
-   const theme = localStorage.getItem('theme');
-   theme && setTheme(theme);
+// UI-Related Constants
+const themeButtons = document.querySelectorAll("li");
+const menu = document.querySelector('#menu');
+const themeSelectors = menu.childNodes;
+const hamburger = document.querySelector(".hamburger");
+const menuIcon = hamburger.firstElementChild;
+const closeIcon = hamburger.lastElementChild;
+
+function toggleMenu() {
+   if (menu.classList.contains("showMenu")) {
+      menu.classList.remove("showMenu");
+      closeIcon.style.display = "none";
+      menuIcon.style.display = "block";
+   } else {
+      menu.classList.add("showMenu");
+      closeIcon.style.display = "block";
+      menuIcon.style.display = "none";
+   }
 }
-// getTheme();
-// document.getElementById('theme-select').addEventListener('change', function () {
-//    setTheme(this.value);
-//    console.log(this)
-// });
+
+hamburger.addEventListener("click", toggleMenu);
+
 // Variables
 let computerScore = 0;
 let playerScore = 0;
@@ -29,10 +38,23 @@ let roundWinner;
 let round = 0;
 let isGameOver = false;
 let winner;
+let defaultTheme;
 
-eventListeners();
+
+// Theme Variables
+const setTheme = (theme) => {
+   document.documentElement.className = theme;
+   localStorage.setItem('theme', theme);
+};
+const getTheme = () => {
+   const theme = localStorage.getItem('theme');
+   setTheme(theme);
+}
+getTheme();
 
 // Event listeners
+eventListeners();
+
 function eventListeners() {
    playGround.addEventListener("click", function (e) {
       if (e.target.id === "rock") {
@@ -45,21 +67,13 @@ function eventListeners() {
       else {
          if (isGameOver === true) {
             console.log(`You cannot select anymore hands because the game is over. Please refresh the page if you want to play again.`);
-         } else {
-            console.log(`Please select a hand.`)
          }
       }
       game();
    });
 }
 
-// window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({matches}) => {
-//    if (matches) {
-//       console.log("change to the dark theme");
-//    } else {
-//       console.log("change to light theme");
-//    };
-// })
+
 
 function getComputerChoice() {
    let randomNumber = Math.floor(Math.random() * 100 + 1);

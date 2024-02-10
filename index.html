@@ -1,33 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en" class="os-default">
 
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Rock Paper Scissors</title>
    <link rel="stylesheet" href="css/style.css">
-   <!-- Fonts -->
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;family=Roboto+Mono:wght@100&amp;display=swap"
-      rel="stylesheet">
-   <!-- FontAwesome -->
    <script src="https://kit.fontawesome.com/a4cf3a1ade.js" crossorigin="anonymous"></script>
-
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Mono:wght@100&display=swap" rel="stylesheet">
 </head>
 
 <body>
    <!--Header-->
    <div class='header-container'>
       <div class="theme-wrapper">
-         <ul name="theme-select">
-            <li value="ligh" onclick="setTheme('light')"><a href="#"><i class="fa-solid fa-sun"></i></a></li>
-            <li value="dark" onclick="setTheme('dark')"><a href="#"><i class="fa-solid fa-moon"></i></a></li>
-            <li value="os-default" onclick="setTheme('os-default')"><a href="#"><i class="fa-solid fa-circle-half-stroke"></i></a></li>
+         <ul name="theme-select" id="menu" class="theme-menu">
+            <li value="light" class="light" onclick="setTheme('light')"><a href="#"><i class="fa-solid fa-sun"></i> Light</a></li>
+            <li value="dark" class="dark" onclick="setTheme('dark')"><a href="#"><i class="fa-solid fa-moon"></i> Dark</a></li>
+            <li value="os-default" class="os-default" onclick="setTheme('os-default')"><a href="#"><i class="fa-solid fa-circle-half-stroke"></i> OS Default</a></li>
          </ul>
          <button class="hamburger">
-            <i class="fa-solid fa-bars"></i>
-            <i class="fa-solid fa-xmark"></i>         
+            <span><i class="fa-solid fa-bars"></i> Theme</span>
+            <span><i class="fa-solid fa-xmark"></i> Close</span>        
          </button>
       </div>
       <div class='header'>
@@ -45,24 +41,24 @@
    <main class="main-content">
       <div class="playground">
          <div class="announce-area">
-            <h2>YOU LOSE</h2>
-            <p>The rock breaks the scissors.</p>
+            <h2 id="announcer">Please select a hand</h2>
+            <p>First to score 5 points wins the game</p>
          </div>
          <div class="hands">
-            <div class="player-hand">✌️</div>
-            <div class="computer-hand">✊</div>
+            <div class="player-hand">?</div>
+            <div class="computer-hand">?</div>
          </div>
          <div class="individual-scores">
-            <h5>Player Score: </h5>
-            <p id="para">0</p>
-            <h5>Computer Score: </h5>
-            <p id="para">1</p>
+            <h5>Player Score </h5>
+            <p id="para"> </p>
+            <p id="para"> </p>
+            <h5>Computer Score </h5>
          </div>
 
          <div class="buttons">
-            <button name="rock">✊</button>
-            <button name="paper">✋</button>
-            <button name="scissors">✌</button>
+            <button id="rock">✊</button>
+            <button id="paper">✋</button>
+            <button id="scissors">✌</button>
          </div>
       </div>
    </main>
