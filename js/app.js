@@ -67,21 +67,6 @@ getTheme();
 eventListeners();
 
 function eventListeners() {
-   // playGround.addEventListener("click", function (e) {
-   //    if (e.target.id === "rock") {
-   //       playerSelection = "rock";
-   //    } else if (e.target.id === "paper") {
-   //       playerSelection = "paper";
-   //    } else if (e.target.id === "scissors") {
-   //       playerSelection = "scissors";
-   //    }
-   //    else {
-   //       if (isGameOver === true) {
-   //          console.log(`You cannot select anymore hands because the game is over. Please refresh the page if you want to play again.`);
-   //       }
-   //    }
-   //    game();
-   // });
    buttons.forEach(button => {
       button.addEventListener("click", (e) => {
          if (e.target.id === "rock") {
@@ -170,14 +155,19 @@ function playRound(playerSelection, computerSelection) {
 function game(winner) {
    getComputerChoice();
    playRound(playerSelection, computerSelection);
+   let playerHandCapitalized = playerSelection[0].toUpperCase() + playerSelection.slice(1);
+   let computerHandCapitalized = computerSelection[0].toUpperCase() + computerSelection.slice(1);
    if (roundWinner === "player") {
-      description.textContent = `You win. ${playerSelection} wins over ${computerSelection}.`
+      announcer.textContent = "YOU WIN"
+      description.textContent = `${playerHandCapitalized} wins over ${computerHandCapitalized}.`
       para[0].textContent = playerScore;
    } else if (roundWinner === "computer") {
-      description.textContent = `You lose. ${computerSelection} wins over ${playerSelection}.`
+      announcer.textContent = "COMPUTER WINS"
+      description.textContent = `You lose. ${computerHandCapitalized} wins over ${playerHandCapitalized}.`
       para[1].textContent = computerScore;
    } else if (roundWinner === "tie") {
-      description.textContent = `It's a tie. ${computerSelection} ties with ${playerSelection}. `
+      announcer.textContent = "ITS A TIE"
+      description.textContent = `${computerHandCapitalized} ties with ${playerHandCapitalized}. `
    }
    if (playerScore === 5 && computerScore < 5 && computerScore >= 0) {
       winner = "player";
@@ -198,10 +188,11 @@ function gameScoreCount(playerScore, computerScore, winner) {
          announcer.textContent = "GAME OVER";
          description.textContent = `The winner is ${gameWinner}. Click the button to play again.`;
       };
-      let replay = document.createElement("a");
-      replay.classList.add("btn", "btn-dark");
-      replay.textContent = "Replay";
-      announceArea.appendChild(replay);
+      let replayBtn = document.createElement("a");
+      replayBtn.classList.add("btn", "btn-dark");
+      replayBtn.textContent = "Replay";
+      announceArea.appendChild(replayBtn);
+      replayBtn.addEventListener("click", restartGame);
    };
 }
 
@@ -211,4 +202,26 @@ function resolveGame(winner) {
    } else if (computerScore === 5) {
       winner = "computer";
    };
+}
+
+function restartGame() {
+   playerScore = 0;
+   computerScore = 0;
+   isGameOver = false;
+   playerSelection = "";
+   computerSelection = "",
+   winner = "";
+   roundWinner = "";
+   announcer.textContent = "GAME RESTARTED";
+   description.textContent = "Please select a hand.";
+   hands.firstChild.nextSibling.textContent = "?";
+   hands.lastChild.previousSibling.textContent = "?";
+   para[0].textContent = "";
+   para[1].textContent = "";
+   for (let i = 0; i < buttons.length; i++) {
+      const element = buttons[i];
+      element.disabled = false;
+   }
+   let replayButton = document.querySelector(".btn-dark");
+   replayButton.remove();
 }

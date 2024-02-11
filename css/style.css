@@ -80,7 +80,11 @@ body {
   height: 31px;
   cursor: pointer;
 }
-.theme-wrapper .hamburger span:last-child {
+.theme-wrapper .hamburger span {
+  font-family: Arial, Helvetica, sans-serif !important;
+  margin-left: 5px;
+}
+.theme-wrapper .hamburger i:last-child {
   display: none;
 }
 
@@ -111,11 +115,10 @@ body {
   position: relative;
   box-shadow: 0 0 4px #000;
 }
-
-.header {
+.header-container .header {
   display: flex;
 }
-.header h1 {
+.header-container .header h1 {
   font-family: "Press Start 2P", monospace;
   color: #e2941d !important;
   text-shadow: 4px 4px 2px #141414, -1px 0px 2px #141414, 2px 2px 2px #141414;
@@ -149,6 +152,10 @@ main .playground .individual-scores {
   justify-content: center;
   gap: 3em;
   margin-bottom: 5vh;
+}
+main .playground .individual-scores div {
+  display: flex;
+  gap: 3em;
 }
 main .playground .buttons {
   display: flex;
@@ -223,7 +230,66 @@ footer .credit {
   }
 }
 @media (max-width: 689px) {
-  .heading h1 {
+  .header-container .heading h1 {
     font-size: 1em;
+  }
+  .header-container .date {
+    display: none;
+  }
+  .header-container .theme-wrapper .hamburger {
+    width: max-content;
+    height: max-content;
+    text-align: center;
+    padding: 0.4em 0.7em;
+  }
+  .header-container .theme-wrapper .hamburger span {
+    display: none;
+  }
+}
+@media (max-width: 545px) {
+  main .playground .announce-area h2 {
+    font-size: 1.9em;
+  }
+  main .playground .announce-area p {
+    font-size: 0.75em;
+  }
+  main .playground .individual-scores {
+    gap: 2em;
+  }
+  main .playground .buttons button {
+    padding: 10px;
+    font-size: 3em;
+    width: 100px;
+    height: 100px;
+  }
+}
+@media (max-width: 397px) {
+  .header-container .header h1 {
+    font-size: 0.7em;
+  }
+  main .playground .announce-area h2 {
+    font-size: 1.1em;
+  }
+  main .playground .announce-area p {
+    font-size: 0.5em;
+  }
+  main .playground .individual-scores {
+    gap: 1em;
+    font-size: 1em;
+  }
+  main .playground .individual-scores div {
+    gap: 1em;
+  }
+  main .playground .buttons button {
+    padding: 7px;
+    font-size: 2em;
+    width: 85px;
+    height: 85px;
+    gap: 5px;
+  }
+}
+@media (max-width: 305px) {
+  .header-container .header h1 {
+    font-size: 0.5em;
   }
 }
