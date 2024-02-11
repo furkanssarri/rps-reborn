@@ -125,11 +125,11 @@ body {
 }
 .header-container .header .reborn {
   transform: rotate(45deg);
-  position: absolute;
-  right: 14.5%;
-  top: 21%;
-  font-size: 1.5em;
+  position: fixed;
   font-weight: bold;
+  right: 26vw;
+  top: 4%;
+  font-size: 1.5em;
   color: #55ff00;
   text-shadow: 4px 4px 2px #141414, -1px 0px 2px #141414, 2px 2px 2px #141414;
 }
@@ -230,9 +230,42 @@ footer .credit {
     --hand-button-bg-hover-color: #3e4042;
   }
 }
+@media (min-width: 2200px) {
+  .header-container .header .reborn {
+    right: 50vw;
+    top: 3%;
+    font-size: 1.5em;
+  }
+}
+@media (min-width: 1920px) {
+  .header-container .header .reborn {
+    right: 32vw;
+    top: 3%;
+    font-size: 1.5em;
+  }
+}
+@media (max-width: 1270px) {
+  .header-container .header .reborn {
+    right: 20vw;
+    top: 5%;
+    font-size: 1.5em;
+  }
+}
+@media (max-width: 1170px) {
+  .header-container .header .reborn {
+    right: 15vw;
+    top: 5%;
+    font-size: 1.5em;
+  }
+}
 @media (max-width: 905px) {
   .heading h1 {
     font-size: 1.2em;
+  }
+  .heading .reborn {
+    right: 10vw;
+    top: 5%;
+    font-size: 1.5em;
   }
   select {
     margin: 0px;
@@ -249,7 +282,7 @@ footer .credit {
     font-size: 1em;
   }
   .header-container .heading .reborn {
-    right: 8%;
+    right: 8vw;
   }
   .header-container .date {
     display: none;
@@ -265,6 +298,11 @@ footer .credit {
   }
 }
 @media (max-width: 545px) {
+  .header-container .header .reborn {
+    right: 5vw;
+    top: 5%;
+    font-size: 1.5em;
+  }
   main .playground .announce-area h2 {
     font-size: 1.9em;
   }
