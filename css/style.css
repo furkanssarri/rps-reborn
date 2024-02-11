@@ -123,6 +123,16 @@ body {
   color: #e2941d !important;
   text-shadow: 4px 4px 2px #141414, -1px 0px 2px #141414, 2px 2px 2px #141414;
 }
+.header-container .header .reborn {
+  transform: rotate(45deg);
+  position: absolute;
+  right: 14.5%;
+  top: 21%;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #55ff00;
+  text-shadow: 4px 4px 2px #141414, -1px 0px 2px #141414, 2px 2px 2px #141414;
+}
 
 main {
   display: flex;
@@ -212,7 +222,12 @@ footer .credit {
   :root {
     --bg-color: #1d1d1d;
     --text-color: #dcdcdc;
+    --li-bg-hover-color: #606062;
+    --li-bg-active-color: #57575a;
+    --link-color: #d8dee2;
     --header-bg-color: #141414;
+    --hand-button-bg-color: #31383f;
+    --hand-button-bg-hover-color: #3e4042;
   }
 }
 @media (max-width: 905px) {
@@ -232,6 +247,9 @@ footer .credit {
 @media (max-width: 689px) {
   .header-container .heading h1 {
     font-size: 1em;
+  }
+  .header-container .heading .reborn {
+    right: 8%;
   }
   .header-container .date {
     display: none;
@@ -267,6 +285,9 @@ footer .credit {
   .header-container .header h1 {
     font-size: 0.7em;
   }
+  .header-container .header .reborn {
+    right: 3%;
+  }
   main .playground .announce-area h2 {
     font-size: 1.1em;
   }
@@ -291,5 +312,9 @@ footer .credit {
 @media (max-width: 305px) {
   .header-container .header h1 {
     font-size: 0.5em;
+  }
+  .header-container .header .reborn {
+    right: 10px;
+    font-size: 1em;
   }
 }

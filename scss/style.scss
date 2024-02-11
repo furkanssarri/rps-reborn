@@ -127,10 +127,21 @@ body {
             -1px 0px 2px #141414,
             2px 2px 2px #141414;
       }
+      .reborn {
+         transform: rotate(45deg);
+         position: absolute;
+         right: 14.5%;
+         top: 21%;
+         font-size: 1.5em;
+         font-weight: bold;
+         color: #55ff00;
+         text-shadow:
+            4px 4px 2px #141414,
+            -1px 0px 2px #141414,
+            2px 2px 2px #141414;
+      }
    }
 }
-
-
 
 main {
    display: flex;
@@ -229,7 +240,12 @@ footer {
    :root {
       --bg-color: #1d1d1d;
       --text-color: #dcdcdc;
+      --li-bg-hover-color: #606062;
+      --li-bg-active-color: #57575a;
+      --link-color: #d8dee2;
       --header-bg-color: #141414;
+      --hand-button-bg-color: #31383f;
+      --hand-button-bg-hover-color: #3e4042;
    }
 }
 
@@ -259,6 +275,9 @@ footer {
          h1 {
             font-size: 1em;
          }
+         .reborn {
+            right: 8%;
+         }
       }
       .date {
          display: none;
@@ -278,12 +297,9 @@ footer {
 }
 
 @media (max-width: 545px) {
-   
    main {
-
       .playground {
          .announce-area {
-            
             h2 {
                font-size: 1.9em;
             }
@@ -295,7 +311,6 @@ footer {
             gap: 2em;
          }
          .buttons {
-
             button {
                padding: 10px;
                font-size: 3em;
@@ -312,6 +327,9 @@ footer {
       .header {
          h1 {
             font-size: 0.7em;
+         }
+         .reborn {
+            right: 3%;
          }
       }
    }
@@ -339,7 +357,7 @@ footer {
                font-size: 2em;
                width: 85px;
                height: 85px;
-               gap: 5px
+               gap: 5px;
             }
          }
       }
@@ -351,6 +369,10 @@ footer {
       .header {
          h1 {
             font-size: 0.5em;
+         }
+         .reborn {
+            right: 10px;
+            font-size: 1em;
          }
       }
    }
