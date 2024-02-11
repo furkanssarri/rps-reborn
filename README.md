@@ -1,4 +1,4 @@
-# rps-console
+# rps-reborn
 
 This is my second time trying to build this little game as part of the [The Odin Project](https://www.theodinproject.com/dashboard)'s amazing curriculum.
 
